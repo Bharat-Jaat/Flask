@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="form_area">
+    <div class="form-container">
+        <h2>LOGIN</h2>
+        <form action="/login" method="POST">
+
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <a href="/dashboard" style="text-decoration: none;color: white ;">Submit</a>
+            </button>
+
+            <div class="no_sccount my-3">
+                <p>
+                    Don't have an account?
+                    <a href="/signup" class="btn bnt-primary">Signup</a>
+                </p>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock body %}

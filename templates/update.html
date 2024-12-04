@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="form_area">
+    <div class="form-container">
+        <h2>Update</h2>
+        <form action="/update" method="POST">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" value="{{user.username}}" name="username">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="{{user.email}}" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" value="{{user.first_name}}" name="first-name" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" value="{{user.last_name}}" name="last-name">
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" value="{{user.password}}" name="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Update</button>
+            <button type="submit" class="submit-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock body %}
