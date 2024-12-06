@@ -84,7 +84,6 @@
         .form_area {
             padding: 2rem;
             display: flex;
-            align-items: center;
             justify-content: center;
         }
 
@@ -93,8 +92,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 70vh;
-            text-align: center;
+            width: 30vw;
         }
 
         .form-container h2 {
@@ -166,11 +164,16 @@
             <h1>Website Name</h1>
         </div>
         <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login">Login</a></li>
+            {% if(session['user_id']) %}
+                {% if(session['type']==1) %}
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/bus">Bus</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% endif %}
+            {% endif %}
         </ul>
     </nav>
 
