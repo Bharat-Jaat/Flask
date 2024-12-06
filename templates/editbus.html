@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="form_area">
+    <div class="form-container">
+        <h2>UPDATE BUS INFORMATION</h2>
+        <form action="/editbus/{{ bus.id }}" method="POST">
+            <div class="input-group">
+                <label for="bus_name">BUS NAME:</label>
+                <input type="text" id="bus_name" value="{{ bus.bus_name }}" name="bus_name" required>
+            </div>
+            <div class="input-group">
+                <label for="source">SOURCE:</label>
+                <input type="text" id="source" value="{{ bus.source }}" name="source" required>
+            </div>
+            <div class="input-group">
+                <label for="dest">DESTINATION:</label>
+                <input type="text" id="dest" value="{{ bus.dest }}" name="dest" required>
+            </div>
+            <div class="input-group">
+                <label for="time">TIME:</label>
+                <input type="time" id="time" value="{{ bus.time }}" name="time" required>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Update
+            </button>
+            <button type="menu" class="submit-btn">Exit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

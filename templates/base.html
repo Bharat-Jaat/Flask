@@ -14,10 +14,10 @@
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
-            background-image:url(/static/busbg.png); 
+            background-image: url(/static/busbg.png);
             background-size: cover;
             min-height: auto;
-            align-items:last baseline;
+            align-items: last baseline;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -92,7 +92,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 30vw;
+            width: 35vw;
         }
 
         .form-container h2 {
@@ -100,7 +100,7 @@
             color: #333;
             margin-bottom: 20px;
         }
-
+        
         .input-group {
             margin-bottom: 15px;
             text-align: left;
@@ -145,11 +145,117 @@
 
         /*      FORM END      */
 
-        /*      searching bus      */
-        .drop-down-select {
+        /*      SEARCHING BUS      */
+        .search_area {
+            padding: 20px;
             display: flex;
             justify-content: center;
-            margin: 20px;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 25%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .drop-down-select {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            width: 200px;
+            min-height: 10%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-box option {
+            padding: 10px;
+        }
+
+        .submit-reset {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background-color: lightgray;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: gray;
+        }
+
+        .submit-btn[type="reset"] {
+            background-color: lightgray;
+        }
+
+        .submit-btn[type="reset"]:hover {
+            background-color: gray;
+        }
+
+        @media (max-width: 768px) {
+            .drop-down-select {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .submit-reset {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        .username-container{
+            background-color: lightgrey;
+            min-height: 6vh; 
+            min-width: 10vw;
+            max-width: fit-content;
+            border-radius: 5px; 
+            margin: 1px; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;
         }
     </style>
 
@@ -164,15 +270,15 @@
             <h1>Website Name</h1>
         </div>
         <ul class="nav-links">
-            {% if(session['user_id']) %}
-                {% if(session['type']==1) %}
-                    <li><a href="/">Dashboard</a></li>
-                    <li><a href="/bus">Bus</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                {% else %}
-                    <li><a href="/">Dashboard</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                {% endif %}
+            {% if session['user_id'] %}
+            {% if(session['type']==1) %}
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/addingbus">Bus</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% endif %}
             {% endif %}
         </ul>
     </nav>

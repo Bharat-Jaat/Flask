@@ -1,5 +1,46 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    Here will be the busses searched
+<div class="form_area">
+    <div class="form-container">
+        <h2>ADDING BUS</h2>
+        <form action="/addingbus" method="POST">
+            <div class="input-group">
+                <label for="bus_name">BUS NAME:</label>
+                <input type="text" id="bus_name" value="" name="bus_name" required>
+            </div>
+    </div>
+    <div class="drop-down-select" style="display: flex; margin: 10px;">
+        <select name="initial-location" class="search-box">
+            <option selected hidden value="">YOUR LOCATION</option>
+            <option value="Badmer">Badmer</option>
+            <option value="Bikaner">Bikaner</option>
+            <option value="Jodhpur">Jodhpur</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Jaiselmer">Jaiselmer</option>
+            <option value="KOta">Kota</option>
+        </select>
+
+        <select name="initial-location" class="search-box">
+            <option selected hidden value="">DESTINATION</option>
+            <option value="Badmer">Badmer</option>
+            <option value="Bikaner">Bikaner</option>
+            <option value="Jodhpur">Jodhpur</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Jaiselmer">Jaiselmer</option>
+            <option value="KOta">Kota</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="time">TIME:</label>
+        <input type="time" id="time" name="time" required>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Search
+    </button>
+    </form>
+</div>
+</div>
 {% endblock body %}

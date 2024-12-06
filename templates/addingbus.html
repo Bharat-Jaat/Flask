@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="form_area">
+    <div class="form-container">
+        <h2>ADDING BUS</h2>
+        <form action="/addingbus" method="POST">
+            <div class="input-group">
+                <label for="bus_name">BUS NAME:</label>
+                <input type="text" id="bus_name" value="" name="bus_name" required>
+            </div>
+            <div class="input-group">
+                <label for="source">SOURCE:</label>
+                <input type="text" id="source" value="" name="source" required>
+            </div>
+            <div class="input-group">
+                <label for="dest">DESTINATION:</label>
+                <input type="text" id="dest" name="dest" required>
+            </div>
+            <div class="input-group">
+                <label for="time">TIME:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Submit
+            </button>
+            <button type="reset" class="submit-btn">
+                Reset
+            </button>
+        </form>
+    </div>
+</div>
+
+<table class="table" style="min-height: 150px;">
+    <thead>
+        <tr>
+            <th scope="col">BUS ID</th>
+            <th scope="col">BUS NAME</th>
+            <th scope="col">SOURCE</th>
+            <th scope="col">DESTINATION</th>
+            <th scope="col">TIME</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bus in bus|reverse %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{bus.bus_name}}</td>
+                <td>{{bus.source}}</td>
+                <td>{{bus.dest}}</td>
+                <td>{{bus.time}}</td>
+                <td>
+                    <a href="/editbus/{{ bus.id }}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="/deletebus/{{ bus.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock body %}

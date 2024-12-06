@@ -2,8 +2,116 @@
 
 {% block body %}
 
-<div class="form_area" style="display: flex; align-items: baseline;">
-    USERNAME: {{user.username}}
+{% if session['user_id'] %}
+<div class="username-container">
+    <span>USERNAME: {{ user.username }}</span>
 </div>
+    {% if(session['type']==0) %}
+<!-- FOR NORMAL USERS -->
+<div class="search_area">
+    <div class="search-container">
+        <form action="/searching" method="POST">
+
+            <div class="drop-down-select" style="display: flex;">
+                <label for="source"></label>
+                <select name="source" class="search-box">
+                    <option selected hidden value="">SOURCE</option>
+                    <option value="Badmer">Badmer</option>
+                    <option value="Bikaner">Bikaner</option>
+                    <option value="Jodhpur">Jodhpur</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Jaiselmer">Jaiselmer</option>
+                    <option value="Kota">Kota</option>
+                </select>
+            </div>
+            <div class="drop-down-select" style="display: flex;">
+                <label for="source"></label>
+                <select name="dest" class="search-box">
+                    <option selected hidden value="">DESTINATION</option>
+                    <option value="Badmer">Badmer</option>
+                    <option value="Bikaner">Bikaner</option>
+                    <option value="Jodhpur">Jodhpur</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Jaiselmer">Jaiselmer</option>
+                    <option value="Kota">Kota</option>
+                </select>
+            </div>
+            
+            <label for="time"></label>
+            <input type="time" name="time" placeholder="time" id="time" class="search-box">
+
+            <div class="submit-reset">
+                <button type="submit" class="submit-btn my-2 mx-2">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="form_area">
+    <div class="form-container">
+        <form action="/searching">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">BUS NAME</th>
+                        <th scope="col">SOURCE</th>
+                        <th scope="col">DESTINATION</th>
+                        <th scope="col">TIME</th>
+                        <th scope="col">BOOK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bus in bus %}
+                    <tr>
+                        <td>{{bus.bus_name}}</td>
+                        <td>{{bus.source}}</td>
+                        <td>{{bus.dest}}</td>
+                        <td>{{bus.time}}</td>
+                        <td>
+                            <a href="/seatbooking" class="btn btn-success">
+                                Book
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+{% else %}
+
+<div class="form_area">
+    <div class="form-container">
+        <form action="/searching">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">BUS NAME</th>
+                        <th scope="col">SOURCE</th>
+                        <th scope="col">DESTINATION</th>
+                        <th scope="col">TIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bus in bus %}
+                    <tr>
+                        <td>{{bus.bus_name}}</td>
+                        <td>{{bus.source}}</td>
+                        <td>{{bus.dest}}</td>
+                        <td>{{bus.time}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endif %}
 
 {% endblock body %}
